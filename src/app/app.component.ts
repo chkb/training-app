@@ -34,6 +34,13 @@ export class AppComponent {
     }
   ];
 
+  excerciseNavigationItems: NavigationItem[] = [
+    {
+      url: '/excercise',
+      text: 'Excercise'
+    }
+  ];
+
   logout(): void {
     this.auth.signOut();
   }

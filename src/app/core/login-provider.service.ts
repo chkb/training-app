@@ -5,16 +5,8 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 import * as firebase from 'firebase/app';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { User } from '../models/user';
 
-
-interface User {
-    uid: string;
-    email: string;
-    photoURL?: string;
-    displayName?: string;
-    favoriteColor?: string;
-    role?: string;
-}
 
 @Injectable()
 export class LoginProviderService {
@@ -90,7 +82,8 @@ export class LoginProviderService {
             uid: user.uid,
             email: user.email,
             displayName: user.displayName,
-            photoURL: user.photoURL
+            photoURL: user.photoURL,
+            role: user.role
         };
 
         this.afs.firestore.doc(`/users/${user.uid}`).get()

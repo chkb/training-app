@@ -1,0 +1,88 @@
+<div fxLayout="column"
+     fxLayoutGap="2%"
+     fxLayoutAlign="space-around center">
+    <div fxFlex>
+        <mat-card class="card">
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item>
+                        <mat-form-field class="full-width">
+                            <input matInput
+                                   placeholder="Name"
+                                   [(ngModel)]="excercise.name"
+                                   name="name">
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-form-field class="full-width">
+                            <input matInput
+                                   placeholder="Description"
+                                   [(ngModel)]="excercise.description"
+                                   name="description">
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-form-field class="full-width">
+                            <input matInput
+                                   placeholder="Description"
+                                   [(ngModel)]="excercise.image"
+                                   name="description">
+                        </mat-form-field>
+                    </mat-list-item>
+                </mat-list>
+                <button mat-raised-button
+                        (click)="createExcercise()">
+                    Create
+                </button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxFlex
+         *ngFor="let item of list">
+        <mat-card class="card">
+            <mat-card-content>
+                <mat-card-header>
+                    <img mat-card-image
+                         [src]="item.data.image">
+                </mat-card-header>
+                <mat-list>
+                    <mat-list-item>
+                        <div mat-list-icon>
+                            <button (click)="deleteItem(item.id)"
+                                    mat-icon-button>
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                        <!-- <h4 mat-line>
+                          <mat-form-field class="full-width">
+                              <input matInput
+                                     (change)="changeItem($event)"
+                                     placeholder="Excercise"
+                                     [value]="item.data.name">
+                          </mat-form-field>
+                      </h4> -->
+                        <h4 mat-line>
+                            <mat-form-field class="full-width">
+                                <input matInput
+                                       placeholder="Image"
+                                       [(ngModel)]="item.data.image">
+                            </mat-form-field>
+                        </h4>
+                        <h4 mat-line>{{item.data.name}}</h4>
+                        <p mat-line>{{item.data.description}}</p>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button
+                        color="primary">
+                    UPDATE
+                </button>
+                <button mat-raised-button
+                        color="warn">
+                    DELETE
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

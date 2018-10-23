@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AppComponent } from './app.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -14,16 +15,21 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginProviderService } from './core/login-provider.service';
 import { AuthGuard } from './core/auth-guard.service';
+import { CrudService } from './service/crud.service';
+import { ExcerciseComponent } from './excercise/excercise.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ExcerciseComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     FlexLayoutModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -31,10 +37,12 @@ import { AuthGuard } from './core/auth-guard.service';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AppMaterialModule,
+    NgxChartsModule,
   ],
   providers: [
     LoginProviderService,
     AuthGuard,
+    CrudService
   ],
   bootstrap: [AppComponent]
 })

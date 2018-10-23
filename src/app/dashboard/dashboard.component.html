@@ -1,1 +1,62 @@
-<h1>Dashboard</h1>
+<mat-card class="card">
+    <mat-card-header *ngIf="user">
+        <img mat-card-avatar
+             [src]="user.photoURL">
+        <mat-card-title>Welcome</mat-card-title>
+        <mat-card-subtitle>{{user.displayName}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <button (click)="createTest()">
+            click
+        </button>
+
+        <mat-list>
+            <mat-list-item *ngFor="let item of list">
+                <mat-icon mat-list-icon
+                          mat-icon-button
+                          (click)="deleteItem(item.id)">delete</mat-icon>
+                <h4 mat-line>{{item.id}}</h4>
+                <h4 mat-line>
+                    <mat-form-field class="example-full-width">
+                        <input matInput
+                               (change)="changeItem($event)"
+                               placeholder="Excercise"
+                               [value]="item.data.name">
+                    </mat-form-field>
+                </h4>
+            </mat-list-item>
+        </mat-list>
+
+    </mat-card-content>
+</mat-card>
+
+<div class="stat-container">
+    <div fxLayout="row"
+         fxLayoutAlign="space-around center">
+        <div fxFlex>
+            <h3>My Current Personal Records</h3>
+            <ngx-charts-number-card [view]="view"
+                                    [bandColor]="'#617D8A'"
+                                    [scheme]="colorScheme"
+                                    [results]="single"
+                                    [textColor]="'white'"
+                                    (select)="onSelect($event)">
+            </ngx-charts-number-card>
+        </div>
+        <div fxFlex>
+            <ngx-charts-bar-vertical [view]="view"
+                                     [scheme]="colorScheme"
+                                     [results]="single"
+                                     [gradient]="gradient"
+                                     [xAxis]="showXAxis"
+                                     [yAxis]="showYAxis"
+                                     [legend]="showLegend"
+                                     [showXAxisLabel]="showXAxisLabel"
+                                     [showYAxisLabel]="showYAxisLabel"
+                                     [xAxisLabel]="xAxisLabel"
+                                     [yAxisLabel]="yAxisLabel"
+                                     (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+        </div>
+    </div>
+</div>

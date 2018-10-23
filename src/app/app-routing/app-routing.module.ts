@@ -5,6 +5,7 @@ import { Route, RouterModule } from '@angular/router';
 import { AuthGuard } from '../core/auth-guard.service';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { LoginComponent } from '../login/login.component';
+import { ExcerciseComponent } from '../excercise/excercise.component';
 
 
 const routes: Route[] = [
@@ -20,6 +21,11 @@ const routes: Route[] = [
     {
         path: 'dashboard',
         component: DashboardComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'excercise',
+        component: ExcerciseComponent,
         canActivate: [AuthGuard]
     }
 ];

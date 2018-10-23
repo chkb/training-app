@@ -1,5 +1,5 @@
-<mat-sidenav-container class="container"
-                       [class.fullscreen]="fullscreenActive">
+<<mat-sidenav-container class="container"
+                        [class.fullscreen]="fullscreenActive">
   <mat-toolbar class="purple">
     <button *ngIf="isAuthenticated"
             mat-icon-button
@@ -20,8 +20,7 @@
         <mat-icon>lock</mat-icon>
         <span>Logud</span>
       </button>
-      <button mat-menu-item
-              (click)="gotomyprofile()">
+      <button mat-menu-item>
         <mat-icon>account_circle</mat-icon>
         <span>Min profil</span>
       </button>
@@ -47,8 +46,28 @@
         </a>
       </span>
     </mat-nav-list>
+    <mat-nav-list class="nav-list">
+      <span>
+        <h3>Excercise</h3>
+        <a *ngFor="let item of excerciseNavigationItems"
+           mat-list-item
+           [routerLink]="item.url"
+           routerLinkActive="active-link"
+           (click)="sidenav.close()">
+          <span>{{item.text}}</span>
+        </a>
+      </span>
+    </mat-nav-list>
   </mat-sidenav>
   <div class="content-container">
     <router-outlet></router-outlet>
+    <a class="global-fab"
+       mat-fab
+       color="primary"
+       matTooltip="Create New PR"
+       routerLinkActive="active"
+       routerLink="/event/create">
+      <mat-icon>add</mat-icon>
+    </a>
   </div>
-</mat-sidenav-container>
+  </mat-sidenav-container>>
